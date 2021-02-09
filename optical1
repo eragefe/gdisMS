@@ -3,6 +3,8 @@
 mpc stop
 amixer -M set Master 128
 aplay /root/opt1.wav
+bash /root/volweb
+
 mpc clear
 mpc add alsa://hw:0
 mpc play
