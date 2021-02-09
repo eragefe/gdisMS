@@ -1,0 +1,10 @@
+#!/bin/bash
+
+i2cset -y 1 17 3 220
+i2cset -y 1 17 4 220
+if [[ $(hostname -I) ]]; then
+    mpc stop
+    aplay /root/net.wav
+else
+    aplay /root/nonet.wav
+fi

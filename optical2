@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mpc stop
+amixer -M set Master 128
+aplay /root/opt2.wav
+mpc clear
+mpc add alsa://hw:0
+mpc play
+
+i2cset -y 1 17 1 0x7a
+i2cset -y 1 17 3 0x41

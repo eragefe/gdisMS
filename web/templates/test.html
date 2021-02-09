@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div id="indexContent">
+      <ul>
+        <p align="center"><img src="/static/gdis.png"></img></p>
+        <p align="center"><a href="{{ url_for('net') }}"><button class="button4" style="height:40px;width:150px">Network Test</button></a></p>
+        <p align="center"><a href="{{ url_for('s1') }}"><button class="button4" style="height:40px;width:150px">Sound Check</button></a></p>
+      </ul>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+i2cset -y 1 17 3 220
+i2cset -y 1 17 4 220
+aplay /root/reboot.wav
+reboot

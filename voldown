@@ -1,0 +1,6 @@
+#!/bin/bash
+
+amixer -M set Master 1- > /dev/null 2>&1
+a=$(amixer |grep "%"|grep Left | awk '{print $4}'| tr -d []%)
+
+echo $a > /root/vol

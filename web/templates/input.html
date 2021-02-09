@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div id="indexContent">
+      <ul>
+        <p align="center"><img src="/static/gdis.png"></img></p>
+        <p align="center"><a href="{{ url_for('streamer') }}"><button class="button4" style="height:40px;width:150px">Network</button></a></p>
+        <p align="center"><a href="{{ url_for('coaxial1') }}"><button class="button4" style="height:40px;width:150px">Coax 1</button></a></p>
+        <p align="center"><a href="{{ url_for('optical1') }}"><button class="button4" style="height:40px;width:150px">Optical 1</button></a></p>
+        <p align="center"><a href="{{ url_for('optical2') }}"><button class="button4" style="height:40px;width:150px">Optical 2</button></a></p>
+      </ul>
+    </form>
+  </div>
+{% endblock %}

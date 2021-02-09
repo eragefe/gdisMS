@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mpc stop
+amixer -M set Master 128
+aplay /root/streamer.wav
+mpc clear
