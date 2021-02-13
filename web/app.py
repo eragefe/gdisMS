@@ -28,26 +28,19 @@ def save_credentials():
     ssid = request.form['ssid']
     wifi_key = request.form['wifi_key']
     create_wpa_supplicant(ssid, wifi_key)
-    os.system('mv wifi.tmp /root/wifi')
-    os.system('sed -i "$ i bash /root/startwifi" /etc/rc.local')
-    os.system('bash /root/wifi')
-    return ('', 204)
+    os.system('bash /tmp/wifi.tmp')
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 @app.route("/volume", methods = ['GET', 'POST'])
 def volume():
     a = request.form["a"]
     create_file(a)
-    os.system('cp vol.tmp /root/vol')
     os.system('bash /root/volweb')
     with open("/root/vol", "r") as f:
          vol = f.read()
     return ('', 204)
-
-def create_file(a):
-
-    temp_conf_file = open('vol.tmp', 'w')
-    temp_conf_file.write('' + a + '')
-    temp_conf_file.close
 
 @app.route('/input')
 def input():
@@ -68,22 +61,27 @@ def power():
 @app.route('/net')
 def net():
     os.system('bash /root/net')
-    return ('', 204)
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
+
+@app.route('/s1', methods = ['GET', 'POST'])
+def s1():
+    os.system('bash /root/test')
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 @app.route('/nos')
 def nos():
-    os.system('i2cset -y 1 17 5 1')
     return render_template('nos.html')
 
 @app.route('/sound1')
 def sound1():
-    os.system('i2cset -y 1 17 5 0')
-    os.system('i2cset -y 1 17 8 4')
     return render_template('sound1.html')
 
 @app.route('/sound2')
 def sound2():
-    os.system('i2cset -y 1 17 8 0')
     return render_template('sound2.html')
 
 @app.route('/volup', methods = ['GET', 'POST'])
@@ -147,11 +145,6 @@ def coaxial2():
          vol = f.read()
     return render_template('app.html', vol=vol)
 
-@app.route('/s1', methods = ['GET', 'POST'])
-def s1():
-    os.system('bash /root/test')
-    return ('', 204)
-
 @app.route('/prev', methods = ['GET', 'POST'])
 def prev():
     os.system('mpc prev')
@@ -174,6 +167,12 @@ def next():
 
 ######## FUNCTIONS ##########
 
+def create_file(a):
+
+    temp_conf_file = open('/root/vol', 'w')
+    temp_conf_file.write('' + a + '')
+    temp_conf_file.close
+
 def scan_wifi_networks():
     iwlist_raw = subprocess.Popen(['iwlist', 'scan'], stdout=subprocess.PIPE)
     ap_list, err = iwlist_raw.communicate()
@@ -189,7 +188,7 @@ def scan_wifi_networks():
 
 def create_wpa_supplicant(ssid, wifi_key):
 
-    temp_conf_file = open('wifi.tmp', 'w')
+    temp_conf_file = open('/tmp/wifi.tmp', 'w')
 
     temp_conf_file.write('#!/bin/bash\n')
     temp_conf_file.write('\n')

@@ -89,8 +89,8 @@ li.wifiNetwork {
 
 li.wifiNetwork:after {
     content: '▼';
-    position: absolute;
-    width: 25px;
+    position: relative;
+    width: 1px;
     color: #deab04;
     font-weight: bold;
     font-size: 1.4rem;
@@ -103,10 +103,10 @@ li.wifiNetwork:after {
 
 select.wifiNetworkInputs {
     position: relative;
-    width: 100%;
+    width: 70%;
     background: #111;
     color: #999;
-    border: none;
+    border: #999 solid 1px;
     outline: none;
     font-size: 1.5rem;
     padding: 1em;
@@ -120,7 +120,7 @@ select.wifiNetworkInputs {
 }
 
 .wifiNetworkInputs{
-    width: 100%;
+    width: 70%;
     margin:2em 0;
     padding:.5em;
     font-size: 1.4rem;
@@ -133,18 +133,18 @@ select.wifiNetworkInputs {
     width: 100%;
     margin:2em 0;
     padding:.5em;
-    background-color: #800000;
+    background-color: #2b0000;
     font-size: 1rem;
     color: #fff;
 }
 
 .manualSSIDEntry{
-	font-size: 1.5rem;
+	font-size: 1rem;
 	color: #deab04;
 }
 
 .vol{
-        font-size: 2rem;
+        font-size: 3rem;
         color: #ffffcc;
 }
 
@@ -246,8 +246,8 @@ input[type=range] {
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background-color: #666;
+    background-color: #ffffcc;
     border-radius: 100%;
-    opacity: 0.5;
+    opacity: 1;
     width: 6px;
     height: 20px;}

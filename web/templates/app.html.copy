@@ -5,9 +5,12 @@
       <ul>
         <p align="center"><img src="/static/gdis.png"></img></p>
 
-        <p align="center" style="font-size:15px"><a href="{{ url_for('wifi') }}"><button class="button2" style="height:25px;width:220px">Wi Fi</button></img></a></p>
-        <p align="center" style="font-size:15px"><a href="{{ url_for('test') }}"><button class="button2" style="height:25px;width:220px">Test</button></img></a></p>
-        <p align="center" style="font-size:15px"><a href="{{ url_for('input') }}"><button class="button2" style="height:25px;width:220px">Input</button></img></a></p>
+        <p align="center" style="font-size:15px"><a href="{{ url_for('wifi') }}"><button class="button2" style="height:45px;width:120px"><img src="/static/wifi.png">
+         &nbsp;&nbsp;&nbsp;Wi Fi</button></img></a></p>
+        <p align="center" style="font-size:15px"><a href="{{ url_for('test') }}"><button class="button2" style="height:45px;width:120px"> <img src="/static/settings.png">
+         &nbsp;&nbsp;&nbsp; Test</button></img></a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{ url_for('input') }}"><button class="button2" style="height:45px;width:120px"><img src="/static/input.png">
+         &nbsp;&nbsp;&nbsp;Input</button></img></a></p>
 
          <form method="POST" action="volume" oninput="x.value=parseInt(a.value)">
             <p align="center" class="vol"><output name="x" for="a">{{ vol }}</output></p>
