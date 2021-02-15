@@ -164,7 +164,7 @@ def next():
 def create_file(a):
 
     temp_conf_file = open('/root/vol', 'w')
-    temp_conf_file.write('' + a + '')
+    temp_conf_file.write(' + a + ')
     temp_conf_file.close
 
 def scan_wifi_networks():
