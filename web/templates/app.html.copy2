@@ -6,12 +6,12 @@
         <p align="center"><label>&nbsp;</label></p>
 
         <p align="center" style="font-size:15px"><a href="{{ url_for('wifi') }}"><button class="button2" style="height:35px;width:220px">Wi Fi</button></img></a></p>
-        <p align="center" style="font-size:15px"><a href="{{ url_for('test') }}"><button class="button2" style="height:35px;width:220px">&#9745; Test</button></img></a>
+        <p align="center" style="font-size:15px"><a href="{{ url_for('test') }}"><button class="button2" style="height:35px;width:220px">Test</button></img></a>
         <p align="center" style="font-size:15px"><a href="{{ url_for('input') }}"><button class="button2" style="height:35px;width:220px">Input</button></img></a></p>
 
          <form method="POST" action="volume" oninput="x.value=parseInt(a.value)">
             <p align="center" class="vol"><output name="x" for="a">{{ vol }}</output></p>
-            <p align="center"><input style="width:250px" value='{{ vol }}' type="range" id="a" name="a" min="0" max="100" onChange="this.form.submit();">
+            <p align="center"><input style="width:250px" value='{{ vol }}' type="range" id="a" name="a" min="0" max="100" onChange="this.form.submit();"> 
          </form>
 
         <p align="center"><label>&nbsp;</label></p>

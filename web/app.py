@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, flash, render_template, request
 import subprocess
 import os
 import time
@@ -40,7 +40,7 @@ def volume():
     os.system('bash /root/volweb')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return ('', 204)
+    return render_template('app.html', vol=vol)
 
 @app.route('/input')
 def input():
@@ -83,20 +83,6 @@ def sound1():
 @app.route('/sound2')
 def sound2():
     return render_template('sound2.html')
-
-@app.route('/volup', methods = ['GET', 'POST'])
-def volup():
-    os.system('bash /root/volup')
-    with open("/root/vol", "r") as f:
-         vol = f.read()
-    return render_template('app.html', vol=vol)
-
-@app.route('/voldown', methods = ['GET', 'POST'])
-def voldown():
-    os.system('bash /root/voldown')
-    with open("/root/vol", "r") as f:
-         vol = f.read()
-    return render_template('app.html', vol=vol)
 
 @app.route('/reboot', methods = ['GET', 'POST'])
 def reboot():
@@ -148,22 +134,30 @@ def coaxial2():
 @app.route('/prev', methods = ['GET', 'POST'])
 def prev():
     os.system('mpc prev')
-    return ('', 204)
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 @app.route('/play', methods = ['GET', 'POST'])
 def play():
     os.system('mpc toggle')
-    return ('', 204)
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 @app.route('/stop', methods = ['GET', 'POST'])
 def stop():
     os.system('mpc stop')
-    return ('', 204)
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 @app.route('/next', methods = ['GET', 'POST'])
 def next():
     os.system('mpc next')
-    return ('', 204)
+    with open("/root/vol", "r") as f:
+         vol = f.read()
+    return render_template('app.html', vol=vol)
 
 ######## FUNCTIONS ##########
 
