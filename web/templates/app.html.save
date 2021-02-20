@@ -26,10 +26,10 @@
         </td></tr></table>
 
             <p align="center"><label>&nbsp;</label></p>
-         <form method="POST" action="volume2">
-            <input class="number" style="background-color:#000000;color:#ffffcc;width:100px" id="c" name="c" type="number" value='{{ vol }}' min="0" max="99" onChange="this.form.submit();">
+         <form method="POST" action="volume2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input class="number" style="background-color:#000000;color:#ffffcc;width:150px" id="c" name="c" type="number" value='{{ vol }}' min="0" max="99" onChange="this.form.submit();">&#8645;
          </form>
-         <p align="center"><label>&nbsp;</label></p>
+            <p align="center"><label>&nbsp;</label></p>
          <form method="POST" action="volume">
             <p align="center"><input style="width:250px" value='{{ vol }}' type="range" id="a" name="a" min="0" max="100" oninput="c.value=a.value" onChange="this.form.submit();">
          </form>
