@@ -1,0 +1,11 @@
+[Unit]
+Description=GDis WEB interface
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/web/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

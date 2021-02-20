@@ -1,0 +1,11 @@
+[Unit]
+Description=GDis WEB interface
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=bash /root/led
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

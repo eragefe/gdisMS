@@ -1,6 +1,0 @@
-#!/bin/bash
-
-a=$(cat /root/vol)
-b=$(echo $a*"2.55" | bc)
-
-amixer -M set Master $b
