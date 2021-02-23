@@ -1,7 +1,8 @@
 #!/bin/bash
 
 mpc stop
-amixer -M set Master 128
+amixer -M set Master 128 > /dev/null 2>&1
 aplay /root/streamer.wav
+amixer -M set Master $(cat /root/vol)% > /dev/null 2>&1
 bash /root/volweb
 mpc clear

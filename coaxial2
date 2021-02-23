@@ -1,7 +1,15 @@
 #!/bin/bash
 
 mpc stop
+amixer -M set Master 128 > /dev/null 2>&1
 aplay /root/coax2.wav
+amixer -M set Master $(cat /root/vol)% > /dev/null 2>&1
+
 mpc clear
 mpc add alsa://hw:0
 mpc play
+
+i2cset -y 1 17 1 0x7a
+i2cset -y 1 17 3 0x43
+
+echo coaxia2 1 > /root/input
