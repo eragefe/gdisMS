@@ -8,8 +8,9 @@
         <table align="center"><tr><td>
         <form action="/input" method="post">
             <select class="select" name="input" onChange="this.form.submit();">
-                <option value="" disabled selected >Input</option>
-                <option value="coax">Coaxial</option>
+                <option value="" disabled selected >{{ input }}</option>
+                <option value="coax1">Coaxial 1</option>
+                <option value="coax2">Coaxial 2</option>
                 <option value="opt1">Optical 1</option>
                 <option value="opt2">Optical 2</option>
                 <option value="streamer">Streamer</option>
@@ -27,7 +28,7 @@
 
             <p align="center"><label>&nbsp;</label></p>
          <form method="POST" action="volume2">
-            <input class="number" style="background-color:#000000;color:#ffffcc;width:100px" id="c" name="c" type="number" value='{{ vol }}' min="0" max="99" onChange="this.form.submit();">
+            <input class="number" style="background-color:#000000;color:#ffffcc;width:100px" id="c" name="c" type="number" value='{{ vol }}' min="0" max="99" placeholder='{{ vol }}' onChange="this.form.submit();">
          </form>
          <p align="center"><label>&nbsp;</label></p>
          <form method="POST" action="volume">

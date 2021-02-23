@@ -11,7 +11,9 @@ app.debug = True
 def index():
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/wifi')
 def wifi():
@@ -31,7 +33,9 @@ def save_credentials():
     os.system('bash /tmp/wifi.tmp')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route("/volume2", methods = ['GET', 'POST'])
 def volume2():
@@ -40,7 +44,9 @@ def volume2():
     os.system('/usr/bin/amixer -M set Master $(cat /root/vol)% > /dev/null 2>&1')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route("/volume", methods = ['GET', 'POST'])
 def volume():
@@ -49,22 +55,33 @@ def volume():
     os.system('/usr/bin/amixer -M set Master $(cat /root/vol)% > /dev/null 2>&1')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/input', methods = ['GET', 'POST'])
 def input():
     input = request.form["input"]
-    if input == "coax":
+    if input == "coax1":
          os.system('bash /root/coaxial1')
+         os.system('echo "Coaxial 1" > /root/input')
+    if input == "coax2":
+         os.system('bash /root/coaxial2')
+         os.system('echo "Coaxial 2" > /root/input')
     if input == "opt1":
          os.system('bash /root/optical1')
+         os.system('echo "Optical 1" > /root/input')
     if input == "opt2":
          os.system('bash /root/optical2')
+         os.system('echo "Optical 2" > /root/input')
     if input == "streamer":
          os.system('bash /root/streamer')
+         os.system('echo "Streamer" > /root/input')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/test', methods = ['GET', 'POST'])
 def test():
@@ -75,7 +92,9 @@ def test():
         os.system('bash /root/net')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/power')
 def power():
@@ -98,28 +117,36 @@ def prev():
     os.system('mpc prev')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/play', methods = ['GET', 'POST'])
 def play():
     os.system('mpc toggle')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/stop', methods = ['GET', 'POST'])
 def stop():
     os.system('mpc stop')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 @app.route('/next', methods = ['GET', 'POST'])
 def next():
     os.system('mpc next')
     with open("/root/vol", "r") as f:
          vol = f.read()
-    return render_template('app.html', vol=vol)
+    with open("/root/input", "r") as f:
+         input = f.read()
+    return render_template('app.html', vol=vol, input=input)
 
 ######## FUNCTIONS ##########
 
