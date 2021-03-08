@@ -10,7 +10,7 @@ from luma.core.render import canvas
 from luma.oled.device import ssd1306, ssd1325, ssd1331, sh1106
 from mpd import MPDClient, MPDError, CommandError, ConnectionError
 
-serial = i2c(port=0, address=0x3C)
+serial = i2c(port=1, address=0x3C)
 device = sh1106(serial, rotate=0)
 
 from PIL import Image
